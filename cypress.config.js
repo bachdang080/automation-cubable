@@ -12,7 +12,7 @@ module.exports = defineConfig({
   viewportHeight: 1080,
   
     // // kiểm tra có cần đăng nhập không
-    //   "env": {
-    //     "loggedIn": "true"
-    //   }
+      // "env": {
+      //   "loggedIn": "true"
+      //  }
 });
