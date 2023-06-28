@@ -8,27 +8,46 @@ import 'cypress-xpath';
 
 
 describe('My first test suite', function() {
-    beforeEach(() => {
-        cy.login();
-        cy.wait(500);
-    }
-    );
+    // beforeEach(() => {
+    //     cy.login();
+    //     cy.wait(500);
+    // }
+    // );
 
-    const value = 'test 4 premium';
-    const xpathWorkspace = `//p[normalize-space()="${value}"]`;
+   
     //p[normalize-space()='Check 1']
 
     it('Check 1', () => {
-        
+        // const value = 'check 1';
+        // const xpathWorkspace = `//p[normalize-space()="${value}"]`;
+        // cy.xpath(xpathWorkspace).click();
         // User.goToRoleAndPermission();
         // cy.wait(500);
         // User.createRole();
-        cy.wait(500);
-        for(let i = 1; i <= 2; i++) {
-            const email_invite = "bachdang" + i + "@mailinator.com{enter}";
-            cy.xpath("//p[normalize-space()='check 1']").click();
-            cy.wait(1000);
-            cy.get('.cdk-overlay-backdrop').click()
+        
+        // cy.wait(3000);
+        // cy.xpath("//p[normalize-space()='check 1']").click();
+        
+        // cy.wait(1000);
+        // cy.get('.cdk-overlay-backdrop').click()
+        // cy.wait(500);
+        
+        //qua mailinator
+            cy.visit('https://www.mailinator.com/v4/public/inboxes.jsp?trialshow=true')
+            cy.wait(1000)
+            cy.get('#requestTrial').type('{esc}')
+            const email_invite = "bachdang1{enter}"
+            cy.get('#inbox_field').type(email_invite)
+            cy.get('[style="float:left;margin-top: 10px;overflow:hidden;"] > .fw-700').click()
+            cy.get("tr[id='row_bachdang1-1687855083-230049656'] td:nth-child(3)").click()
+            cy.get('#pills-links-tab').click()
+            cy.get('tbody > :nth-child(1) > :nth-child(2) > a').click()
+
+            cy.get('.wgc-form-field__input-container > .wgc-form-field__input > .ng-invalid').type("Dang 1");
+            
+
+        /*for(let i = 1; i <= 10; i++) {
+            const email_invite = "bachdang" + i + "@mailinator.com";
             cy.get('.icon.icon-user-plus').click();
             cy.wait(500);
             cy.get('.wgc-form-field.mb-10 > .wgc-form-field__input-container > .wgc-form-field__input > .ng-untouched').type(email_invite);
@@ -39,17 +58,7 @@ describe('My first test suite', function() {
             cy.wait(500);
             cy.get('[wgcdialogheader=""] > .wgc-primary > .wgc-button-wrapper').click();
             cy.wait(500);
-            cy.visit("https://www.mailinator.com/");
-            cy.wait(500);
-            cy.get('#search').type(email_invite);
-            cy.wait(500);
-            cy.get("tr[id='row_bachdang1-1687849200-229924483'] td:nth-child(3)").click();
-            cy.wait(500);
-            cy.get("#pills-textbuthtml-tab").click();
-            cy.wait(500);
-            cy.xpath("//a[contains(text(),'https://line1.8aday.com/accept-invitation?token=8%')]").click();
-            cy.wait(500);
-        }
+        }*/
         
 
         /*
