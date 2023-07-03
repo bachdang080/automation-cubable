@@ -8,57 +8,99 @@ import 'cypress-xpath';
 
 
 describe('My first test suite', function() {
-    // beforeEach(() => {
-    //     cy.login();
-    //     cy.wait(500);
-    // }
-    // );
+    beforeEach(() => {
+        cy.login();
+        cy.wait(500);
+    }
+    );
 
    
     //p[normalize-space()='Check 1']
 
     it('Check 1', () => {
-        // const value = 'check 1';
-        // const xpathWorkspace = `//p[normalize-space()="${value}"]`;
-        // cy.xpath(xpathWorkspace).click();
+        const value = 'test 1';
+        const xpathWorkspace = `//h4[@class='wgc-truncate wgc-truncate--single-line']//p[contains(text(),"${value}")]`; 
+        cy.xpath(xpathWorkspace).click();
+        cy.get('.cdk-overlay-backdrop').click()
+        cy.wait(500);
         // User.goToRoleAndPermission();
-        // cy.wait(500);
-        // User.createRole();
+        // //invite user
+        // for(let i = 3; i <= 20; i++) {
+        //     const email_invite = "bachdang" + i + "@mailinator.com{enter}";
+        //     cy.get('.icon.icon-user-plus').click();
+        //     cy.wait(500);
+        //     cy.get('.wgc-form-field.mb-10 > .wgc-form-field__input-container > .wgc-form-field__input > .ng-untouched').type(email_invite);
+        //     cy.wait(500);
+        //     cy.get('.wgc-dropdown.ng-invalid > .wgc-form-field > .wgc-form-field__input-container > .wgc-form-field__suffix').click();
+        //     cy.wait(500);
+        //     cy.get(':nth-child(2) > .wgc-menu-item__content').click();
+        //     cy.wait(500);
+        //     cy.get('[wgcdialogheader=""] > .wgc-primary > .wgc-button-wrapper').click();
+        //     cy.wait(500);
+        // }
+        cy.wait(500);
+        User.goToRoleAndPermission();
+        User.createRole();
+        Collection.createCollection();
         
-        // cy.wait(3000);
-        // cy.xpath("//p[normalize-space()='check 1']").click();
-        
-        // cy.wait(1000);
-        // cy.get('.cdk-overlay-backdrop').click()
+        cy.wait(500);
+        Board.createBoard();
+        CreateField.dateField();
+        //Tatws help center
+        // cy.get('.help-center__btn-toggle').click();
         // cy.wait(500);
+        //Tạo field Dropdown cho board
+        const dropName = "Field Dropdown";
+        const dropDes = "Des cùa field Dropdown";
+        CreateField.dropdownField(dropName, dropDes);
+        CreateField.checkboxField();
+        CreateField.paragraphField();
+        CreateField.attachmentField();
+        CreateField.emailField();
+        CreateField.moneyField();
+        CreateField.numberField();
+        CreateField.peopleField();
+        CreateField.phoneField();
+        CreateField.websiteField();
+        CreateField.formulaField();
+        CreateField.ratingField();
+        CreateField.labelField();
+        CreateField.progressManualField();
+        CreateField.progressAutoField();
+        CreateField.timeTrackerField();
+        CreateField.locationField();
+        CreateField.priorityField();
+        CreateField.imageField();
+        CreateField.pollField();
+        CreateField.docsField();
+        CreateField.refField();
+        CreateField.lookupField();
+        CreateField.lastModifiedByField();
+        CreateField.lastModifiedTimeField();
+        for (let i = 1; i <= 100; i++) {
+            cy.get('.inserting-row__left > .wgc-basic-button > .wgc-basic-button-wrapper > .wgc-basic-button__content').scrollIntoView().click();
+            const rowNumber = "row " + i;
+            cy.get('.ng-invalid').type(rowNumber);
+            cy.get('.inserting-row__right > .wgc-primary > .wgc-button-wrapper').click();
+            cy.wait(500);
+        }
+        
         
         //qua mailinator
-            cy.visit('https://www.mailinator.com/v4/public/inboxes.jsp?trialshow=true')
-            cy.wait(1000)
-            cy.get('#requestTrial').type('{esc}')
-            const email_invite = "bachdang1{enter}"
-            cy.get('#inbox_field').type(email_invite)
-            cy.get('[style="float:left;margin-top: 10px;overflow:hidden;"] > .fw-700').click()
-            cy.get("tr[id='row_bachdang1-1687855083-230049656'] td:nth-child(3)").click()
-            cy.get('#pills-links-tab').click()
-            cy.get('tbody > :nth-child(1) > :nth-child(2) > a').click()
+            // cy.visit('https://www.mailinator.com/v4/public/inboxes.jsp?trialshow=true')
+            // cy.wait(1000)
+            // cy.get('#requestTrial').type('{esc}')
+            // const email_invite = "bachdang1{enter}"
+            // cy.get('#inbox_field').type(email_invite)
+            // cy.get('[style="float:left;margin-top: 10px;overflow:hidden;"] > .fw-700').click()
+            // cy.get("tr[id='row_bachdang1-1687855083-230049656'] td:nth-child(3)").click()
+            // cy.get('#pills-links-tab').click()
+            // cy.get('tbody > :nth-child(1) > :nth-child(2) > a').click()
 
-            cy.get('.wgc-form-field__input-container > .wgc-form-field__input > .ng-invalid').type("Dang 1");
+            // cy.get('.wgc-form-field__input-container > .wgc-form-field__input > .ng-invalid').type("Dang 1");
             
 
-        /*for(let i = 1; i <= 10; i++) {
-            const email_invite = "bachdang" + i + "@mailinator.com";
-            cy.get('.icon.icon-user-plus').click();
-            cy.wait(500);
-            cy.get('.wgc-form-field.mb-10 > .wgc-form-field__input-container > .wgc-form-field__input > .ng-untouched').type(email_invite);
-            cy.wait(500);
-            cy.get('.wgc-dropdown.ng-invalid > .wgc-form-field > .wgc-form-field__input-container > .wgc-form-field__suffix').click();
-            cy.wait(500);
-            cy.get(':nth-child(2) > .wgc-menu-item__content').click();
-            cy.wait(500);
-            cy.get('[wgcdialogheader=""] > .wgc-primary > .wgc-button-wrapper').click();
-            cy.wait(500);
-        }*/
+        
         
 
         /*

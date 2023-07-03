@@ -3,10 +3,10 @@ class Collection {
         // bấm button new
         const button_new_collection = "//div[contains(text(),'New')]";
         const new_collection = "//div[normalize-space()='New collection']";
-        const button_help_close ='.cdk-overlay-backdrop';
+        
+        //bấm vào collection
+        cy.get('.direction__top > :nth-child(2) > :nth-child(1)').click();
 
-        cy.get(button_help_close).click();
-        cy.wait(500);
         cy.xpath(button_new_collection).click();
         cy.wait(500);
         cy.xpath(new_collection).click();

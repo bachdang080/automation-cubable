@@ -3,7 +3,7 @@ class User {
     //Workspace setting -> User -> Manage workspace setting & permission
     static goToRoleAndPermission() {
         //button workspace
-        cy.get("button[class='wgc-basic-button wgc-basic-button--left'] wgc-avatar[class='wgc-avatar wgc-avatar--auto-color wgc-avatar--small']").click();
+        cy.get('switcher.mb-20 > .wgc-basic-button > .wgc-basic-button-wrapper > .wgc-basic-button__content').click();
         cy.wait(500);
         //button workspace setting
         cy.get('[icon="settings"] > .wgc-menu-item__content').click();
@@ -12,17 +12,17 @@ class User {
         cy.get(':nth-child(2) > .wgc-list-item__content > .wgc-list-item__content-wrapper > .wgc-list-item__content-label > .wgc-inline-input > .wgc-truncate > p > span').click();
         cy.wait(500);
         //Manage workspace setting & permission
-        cy.get('.wgc-tab-group__header-list > :nth-child(3)').click();
-        cy.wait(500);
-        //Tatws help center
-        cy.get('.help-center__btn-toggle').click();
-        cy.wait(500);
+        // cy.get('.wgc-tab-group__header-list > :nth-child(2)').click();
+        // cy.wait(500);
+        // //Tatws help center
+        // cy.get('.help-center__btn-toggle').click();
+        // cy.wait(500);
     }
     //Tao role
     static createRole() {
         //let totalItems = 1;
         //cy.get(':nth-child(4) > .wgc-card-wrapper > .layout-align-space-between-center > :nth-child(2) > .wgc-switch > .wgc-switch__box').click();//.should('have.class', 'active',{ timeout: 5000 });
-        
+        cy.get('.wgc-tab-group__header-list > :nth-child(2)').click();
         //for (let i = 1; i <= totalItems; i++) {
             //Click create new role
             cy.get(':nth-child(3) > .layout-row > .wgc-basic-button > .wgc-basic-button-wrapper > .wgc-basic-button__content').click();
