@@ -1,10 +1,13 @@
 class Board {
-    static createBoard() {
+    static createBoard(boardName) {
         //Create new board
-        cy.get('.mt-15 > .wgc-basic-button > .wgc-basic-button-wrapper > .wgc-basic-button__content').click();
+        cy.xpath('//div[contains(text(),"New board")]').click();
         //cy.get('.wgc-form-field__input > .ng-star-inserted').type("test 1");
-        cy.get('.mt-15 > .wgc-form-field > .wgc-form-field__input-container > .wgc-form-field__input > .ng-star-inserted').type("test 1");
-        cy.get("wgc-icon[class='wgc-icon ng-star-inserted'] i[class='icon icon-check ng-star-inserted']").click();
+        cy.xpath('//input[@placeholder="Type a name"]').type(boardName);
+        cy.xpath('//wgc-icon[@class="wgc-icon ng-star-inserted"]//i[@class="icon icon-check ng-star-inserted"]').click();
+        // tạo màu board
+        cy.xpath('//div[@class="cdk-drag wgc-list-item ng-star-inserted wgc-list-item--active"]//div[@class="wgc-color-dot-wrapper ng-star-inserted"]').click()
+        cy.get('[style="--color-picker-item-color: #242426; --color-picker-item-bg-color: #ffd426;"]') .click();
         cy.wait(500);
     }
 }
@@ -285,10 +288,10 @@ class CreateField {
         cy.get(':nth-child(24) > .wgc-menu-item__content').click();
         cy.wait(500)
         //cy.get(':nth-child(1) > .wgc-form-field__input-container > .wgc-form-field__input > .ng-star-inserted').type("Field Poll")
-        cy.get("//input[@placeholder='Type a name']").type("Field Poll");
+        cy.xpath("//input[@placeholder='Type a name']").type("Field Poll");
         cy.get('.wgc-form-field--invalid.wgc-form-field--pristine > .wgc-form-field__input-container > .wgc-form-field__input > .ng-untouched').type("Question Field Poll");
         //cy.get("input[placeholder='Type description']").type("Des của field Poll");
-        cy.get('.wgc-form-field--invalid > .wgc-form-field__input-container > .wgc-form-field__input > .ng-untouched').type("Question 1");
+        //cy.get('.wgc-form-field--invalid > .wgc-form-field__input-container > .wgc-form-field__input > .ng-untouched').type("Question 1");
         cy.get("button[type='submit'] div[class='wgc-button-wrapper']").click();
         cy.wait(500)
     }
@@ -316,7 +319,7 @@ class CreateField {
         cy.get(':nth-child(21) > .wgc-menu-item__content').click();
         cy.wait(500)
         //cy.get('.wgc-form-field__input > .ng-invalid')
-        cy.get('.wgc-form-field--dirty > .wgc-form-field__input-container > .wgc-form-field__input > .ng-invalid')
+        cy.get('.wgc-form-field--dirty > .wgc-form-field__input-container > .wgc-form-field__input > .ng-invalid').click
         cy.get('.wgc-form-field__input > .ng-invalid').type("Field Reference");
         //cy.get("input[placeholder='Type description']").type("Des của field reference");
         cy.get('.wgc-form-field.cursor > .wgc-form-field__input-container > .wgc-form-field__suffix').click();

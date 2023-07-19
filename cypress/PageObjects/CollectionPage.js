@@ -1,12 +1,12 @@
 class Collection {
     static createCollection() {
         // bấm button new
-        const button_new_collection = "//div[contains(text(),'New')]";
-        const new_collection = "//div[normalize-space()='New collection']";
+        const button_new_collection = "//button[@class='wgc-button ml-15 wgc-primary wgc-button--has-icon wgc-button--medium wgc-button--center']//div[@class='wgc-button-wrapper']";
+        const new_collection = "//button[@icon='collection-plus']";
         
         //bấm vào collection
         cy.get('.direction__top > :nth-child(2) > :nth-child(1)').click();
-
+        
         cy.xpath(button_new_collection).click();
         cy.wait(500);
         cy.xpath(new_collection).click();

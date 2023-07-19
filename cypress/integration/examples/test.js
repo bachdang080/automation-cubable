@@ -1,6 +1,7 @@
 import faker from 'faker';
 import Collection from '../../PageObjects/CollectionPage';
 import {CreateField, Board} from '../../PageObjects/BoardPage';
+import Workspace from '../../PageObjects/Workspace';
 import User from '../../PageObjects/User';
 import 'cypress-xpath';
 
@@ -14,41 +15,45 @@ describe('My first test suite', function() {
     }
     );
 
-   
-    //p[normalize-space()='Check 1']
-
     it('Check 1', () => {
-        const value = 'test 1';
+        const value = 'qatest106';
         const xpathWorkspace = `//h4[@class='wgc-truncate wgc-truncate--single-line']//p[contains(text(),"${value}")]`; 
-        cy.xpath(xpathWorkspace).click();
-        cy.get('.cdk-overlay-backdrop').click()
+        const workspaceName = 'WP Automation 1{enter}';
+        //cy.xpath(xpathWorkspace).click();
+        Workspace.createWorkspace(workspaceName);
+        cy.get('.cdk-overlay-backdrop').click();
         cy.wait(500);
+
+        //Đổi language sang tiếng Anh
+        cy.get('.wgc-basic-button__content > .wgc-avatar > .wgc-avatar__image').click();
+        cy.get('[icon="globe"] > .wgc-menu-item__content').click();
+        cy.xpath("//div[normalize-space()='English']").click();
+        cy.get('.cdk-overlay-backdrop').click();
+        cy.wait(500);
+        /*User.goToRoleAndPermission();
+        //invite user
+        for(let i = 2; i <= 20; i++) {
+            const email_invite = "bachdang" + i + "@mailinator.com{enter}";
+            cy.get('.icon.icon-user-plus').click();
+            cy.wait(500);
+            cy.get('.wgc-form-field.mb-10 > .wgc-form-field__input-container > .wgc-form-field__input > .ng-untouched').type(email_invite);
+            cy.wait(500);
+            // cy.get('.wgc-dropdown.ng-invalid > .wgc-form-field > .wgc-form-field__input-container > .wgc-form-field__suffix').click();
+            // cy.wait(500);
+            // cy.get(':nth-child(2) > .wgc-menu-item__content').click();
+            // cy.wait(500);
+            cy.get('[wgcdialogheader=""] > .wgc-primary > .wgc-button-wrapper').click();
+            cy.wait(500);
+        }
+        cy.wait(500);*/
         // User.goToRoleAndPermission();
-        // //invite user
-        // for(let i = 3; i <= 20; i++) {
-        //     const email_invite = "bachdang" + i + "@mailinator.com{enter}";
-        //     cy.get('.icon.icon-user-plus').click();
-        //     cy.wait(500);
-        //     cy.get('.wgc-form-field.mb-10 > .wgc-form-field__input-container > .wgc-form-field__input > .ng-untouched').type(email_invite);
-        //     cy.wait(500);
-        //     cy.get('.wgc-dropdown.ng-invalid > .wgc-form-field > .wgc-form-field__input-container > .wgc-form-field__suffix').click();
-        //     cy.wait(500);
-        //     cy.get(':nth-child(2) > .wgc-menu-item__content').click();
-        //     cy.wait(500);
-        //     cy.get('[wgcdialogheader=""] > .wgc-primary > .wgc-button-wrapper').click();
-        //     cy.wait(500);
-        // }
-        cy.wait(500);
-        User.goToRoleAndPermission();
-        User.createRole();
+        // User.createRole();
         Collection.createCollection();
         
         cy.wait(500);
-        Board.createBoard();
+        const boardName = 'Board 1';
+        Board.createBoard(boardName);
         CreateField.dateField();
-        //Tatws help center
-        // cy.get('.help-center__btn-toggle').click();
-        // cy.wait(500);
         //Tạo field Dropdown cho board
         const dropName = "Field Dropdown";
         const dropDes = "Des cùa field Dropdown";
@@ -73,10 +78,10 @@ describe('My first test suite', function() {
         CreateField.imageField();
         CreateField.pollField();
         CreateField.docsField();
-        CreateField.refField();
-        CreateField.lookupField();
-        CreateField.lastModifiedByField();
-        CreateField.lastModifiedTimeField();
+        // CreateField.refField();
+        // CreateField.lookupField();
+        // CreateField.lastModifiedByField();
+        // CreateField.lastModifiedTimeField();
         for (let i = 1; i <= 100; i++) {
             cy.get('.inserting-row__left > .wgc-basic-button > .wgc-basic-button-wrapper > .wgc-basic-button__content').scrollIntoView().click();
             const rowNumber = "row " + i;
@@ -202,30 +207,7 @@ describe('My first test suite', function() {
         }
 
             */
-        // CreateField.checkboxField();
-        // CreateField.paragraphField();
-        // CreateField.attachmentField();
-        // CreateField.emailField();
-        // CreateField.moneyField();
-        // CreateField.numberField();
-        // CreateField.peopleField();
-        // CreateField.phoneField();
-        // CreateField.websiteField();
-        // CreateField.formulaField();
-        // CreateField.ratingField();
-        // CreateField.labelField();
-        // CreateField.progressManualField();
-        // CreateField.progressAutoField();
-        // CreateField.timeTrackerField();
-        // CreateField.locationField();
-        // CreateField.priorityField();
-        // CreateField.imageField();
-        // CreateField.pollField();
-        // CreateField.docsField();
-        // CreateField.refField();
-        // CreateField.lookupField();
-        // CreateField.lastModifiedByField();
-        // CreateField.lastModifiedTimeField();
+        
         // for (let i = 1; i <= 100; i++) {
         //     cy.get('.inserting-row__left > .wgc-basic-button > .wgc-basic-button-wrapper > .wgc-basic-button__content').scrollIntoView().click();
         //     const rowNumber = "row " + i;

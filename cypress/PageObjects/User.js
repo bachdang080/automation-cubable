@@ -20,10 +20,10 @@ class User {
     }
     //Tao role
     static createRole() {
-        //let totalItems = 1;
+        let totalItems = 10;
         //cy.get(':nth-child(4) > .wgc-card-wrapper > .layout-align-space-between-center > :nth-child(2) > .wgc-switch > .wgc-switch__box').click();//.should('have.class', 'active',{ timeout: 5000 });
         cy.get('.wgc-tab-group__header-list > :nth-child(2)').click();
-        //for (let i = 1; i <= totalItems; i++) {
+        for (let i = 1; i <= totalItems; i++) {
             //Click create new role
             cy.get(':nth-child(3) > .layout-row > .wgc-basic-button > .wgc-basic-button-wrapper > .wgc-basic-button__content').click();
             const randomItem = faker.lorem.words();
@@ -53,7 +53,7 @@ class User {
             // click button save
             cy.get('[wgcdialogheader=""] > .wgc-primary > .wgc-button-wrapper').click();
             cy.wait(2000);
-         // }
+         }
     }
     //Change status của permission collection
     static statusPermissionCollection(status) {
@@ -111,6 +111,14 @@ class User {
     }
     static statusRole() {
         cy.get(`:nth-child(3) > .wgc-scroll-bar > :nth-child(${i}) > .wgc-card-wrapper > .layout-align-space-between-center > :nth-child(2) > .wgc-switch > .wgc-switch__box`).click();
+        cy.wait(500);
+    }
+    static changeLanguage() {
+        //Đổi language sang tiếng Anh
+        cy.get('.wgc-basic-button__content > .wgc-avatar > .wgc-avatar__image').click();
+        cy.get('[icon="globe"] > .wgc-menu-item__content').click();
+        cy.xpath("//div[normalize-space()='English']").click();
+        cy.get('.cdk-overlay-backdrop').click();
         cy.wait(500);
     }
     
